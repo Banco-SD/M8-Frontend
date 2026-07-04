@@ -20,7 +20,6 @@ export default function CadastroPage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // Função utilitária para remover caracteres não numéricos de máscaras
   const apenasNumeros = (valor: string) => valor.replace(/\D/g, "");
 
   const submit = async (e: React.FormEvent) => {
@@ -29,22 +28,22 @@ export default function CadastroPage() {
     setLoading(true);
 
     try {
-      // Higienização dos dados para bater com as anotações @CPF e @Pattern do Java
+      
       const payloadValido = {
         nome,
         email,
         senha: password,
-        cpf: apenasNumeros(cpf),         // Remove pontos e hífens
-        telefone: apenasNumeros(telefone), // Remove (), espaços e hífens
+        cpf: apenasNumeros(cpf),         
+        telefone: apenasNumeros(telefone), 
         dataNascimento,
       };
 
       await authService.register(payloadValido);
       router.push("/login");
     } catch (err: any) {
-      // Captura os detalhes do BadRequest enviados pelo Spring Boot
+    
       if (err.response?.data?.errors) {
-        // Se a sua equipe configurou uma resposta padrão de validação ou se for o padrão do Spring
+      
         const mensagensValidacao = err.response.data.errors
           .map((e: any) => e.message || e.defaultMessage)
           .join(" | ");
@@ -69,7 +68,7 @@ export default function CadastroPage() {
         }}
       >
         <Paper elevation={0} sx={{ p: 5, borderRadius: 4, width: 500 }}>
-          <Typography variant="h4" className="font-bold">
+          <Typography variant="h4" className="font-bold" sx={{ mb: 2 }}>
               In<span className="text-emerald-400">Vest</span>
         </Typography>
 

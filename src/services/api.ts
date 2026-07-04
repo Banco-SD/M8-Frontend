@@ -67,8 +67,3 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export const fetchPortfolioData = async (usuarioId: string) => {
-  const response = await api.get(`/api/portfolio/${usuarioId}`);
-  return response.data;
-};

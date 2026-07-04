@@ -9,7 +9,7 @@ import ErrorIcon from "@mui/icons-material/Error";
 import { authService } from "@/src/services/authService";
 import { MuiProvider } from "@/src/lib/mui-provider";
 
-// Componente isolado para ler a URL (Necessário para o Next.js)
+
 function VerificadorConteudo() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -19,9 +19,9 @@ function VerificadorConteudo() {
   const [mensagem, setMensagem] = useState("Validando seu e-mail, aguarde um momento...");
 
 useEffect(() => {
-    // Se a pessoa acessar a página sem um token na URL
+   
     if (!token) {
-      // setTimeout joga a atualização de estado para o fim da fila, evitando o erro do compilador
+     
       setTimeout(() => {
         setStatus("erro");
         setMensagem("Link de verificação inválido ou ausente.");
@@ -35,7 +35,7 @@ useEffect(() => {
         setStatus("sucesso");
         setMensagem("Conta ativada! Você já pode fazer login na InVest.");
         
-        // Redireciona para o login após 3 segundos de sucesso
+        
         setTimeout(() => {
           router.push("/login");
         }, 3000);
@@ -76,7 +76,6 @@ useEffect(() => {
   );
 }
 
-// O Next.js exige que qualquer leitura de parâmetros da URL seja envelopada por um <Suspense>
 export default function VerificarEmailPage() {
   return (
     <MuiProvider>
