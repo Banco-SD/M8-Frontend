@@ -14,12 +14,14 @@ export function OrderForm() {
     setLoading(true);
     setMsg(null);
     try {
-      const res = await brokerageService.placeOrder({
+      // Adicionamos o "as { ... }" para o TypeScript reconhecer os campos
+      const res = (await brokerageService.placeOrder({
         symbol,
         quantity: Number(qty),
         price: Number(price),
         side,
-      });
+      })) as { orderId: string; status: string };
+
       setMsg(`Ordem ${res.orderId} ${res.status.toLowerCase()}`);
     } catch {
       setMsg("Brokerage Service indisponível");
