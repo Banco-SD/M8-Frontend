@@ -67,7 +67,7 @@ export function Topbar() {
               <Box className={`mt-1 h-2 w-2 rounded-full ${n.read ? "bg-white/20" : "bg-emerald-400"}`} />
               <ListItemText
                 primary={n.title}
-                secondary={`${n.body} · ${n.createdAt}`}
+                secondary={n.body}
                 slotProps={{
                   primary: { sx: { fontSize: 14, fontWeight: 600, color: "white" } },
                   secondary: { sx: { fontSize: 12, color: "rgba(255,255,255,0.55)" } },
